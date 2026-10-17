@@ -57,13 +57,17 @@ else:
     st.subheader("🔒 Binaire Bit Verwerking")
     bericht_bit = st.radio("Selecteer een invoerbit voor homomorfe encryptie:", (0, 1))
     
-    # DE GECORRIGEERDE ASSERTION CHECK:
-    assert bericht_bit in, "De homomorfe engine verwerkt binaire bits (0 of 1)."
+    # VEILIG EN CRASH-VRIJ ALTERNATIEF VOOR DE ASSERT CHECK:
+    if bericht_bit == 0 or bericht_bit == 1:
+        pass
+    else:
+        st.error("De homomorfe engine verwerkt alleen binaire bits (0 of 1).")
+        st.stop()
     
     if st.button("Start Quantum Encryptie Simulatie"):
         with st.spinner("Matrix integriteit controleren..."):
             time.sleep(0.8)
-            st.code(f"📱 [ROCKETCORE INTERFACE]: Live Status Panel - Actief")
+            st.code("📱 [ROCKETCORE INTERFACE]: Live Status Panel - Actief")
             st.code(f"🔒 [QUANTUM PQC]: Encrypting bit {bericht_bit} via Post-Quantum Shield...")
             time.sleep(0.5)
             st.success(f"✅ Bit {bericht_bit} succesvol homomorf versleuteld en verwerkt!")
